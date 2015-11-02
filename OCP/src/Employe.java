@@ -20,6 +20,7 @@ public class Employe {
 		this.nbAnnee = nbAnnee;
 	}
 	
+	public double calculSalaire() {return 1500+20*nbAnnee;}
 
 
 	public String getNom() {

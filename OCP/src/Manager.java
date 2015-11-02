@@ -14,5 +14,8 @@ public class Manager extends Employe {
 	public void setNbPersonne(int nbPersonne) {
 		this.nbPersonne = nbPersonne;
 	}
+	
+	public double calculSalaireManager() {return calculSalaire()+nbPersonne*100;}
+
 
 }
