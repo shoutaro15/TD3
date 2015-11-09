@@ -34,6 +34,8 @@ public class Terrain {
 	}
 	
 	
-	
+	public static void main()
+	{	
+	}
 
 }
