@@ -7,7 +7,7 @@ package fr.uvsq.coo.ex3_6.fr;
  */
 public class SimplePrinter  implements Printer{
 	
-	
+
 	public void print() {/* print a document */}
 
 
