@@ -66,9 +66,10 @@ public class Personnel  implements Element{
 		System.out.println(nom);
 		
 	}
-	public static void main(String args[]) {
-		Personnel Jimmy = new Personnel.Builder("Jimmy","Hoche",LocalDate.now()).build();
+	public void afficheLargeur()
+	{
 		
 	}
-	
+
+
 }
