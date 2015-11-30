@@ -1,8 +1,12 @@
 package fr.uvsq.coo.exo3_8.fr;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -77,21 +81,38 @@ public class Personnel  implements Element {
 		
 	}
 
-	public void lire() {
-		// TODO Auto-generated method stub
+	public void lire() throws FileNotFoundException, IOException, ClassNotFoundException {
+		
+		try(ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(
+				new FileInputStream("./Personnel.txt") ) ) ) {
+				String nom = in.readUTF();
+				String prenom = in.readUTF();
+				LocalDate dateNaissance = (LocalDate) in.readObject();
+				
+				System.out.println("Le nom est :"+nom +"\n Le prenom est :"+prenom+
+						"\n La date de naissance est:"+dateNaissance);
+				
+				int taille = in.readInt();
+				
+				ArrayList<Long> tele = new ArrayList<Long>();
+				
+				for(int i=0 ; i<taille ;i++)
+				{
+					tele.add( (Long)  in.readObject() );
+					System.out.println(tele.get(i));
+					
+				}
+				
+				}
+		
+				
 		
 	}
 
 	public void ecrire() throws IOException {
-		private static final long serialVersionUID = 1L;
-		private final String nom;
-		private final String prenom;
-		private final LocalDate dateNaissance;
-		private final  ArrayList<Long> telephone;
-		private final  String poste;
 
 		try(
-				ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("./Test.xml"))))
+				ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("./Personnel.xml"))))
 				{					
 					out.writeUTF(nom);
 					out.writeUTF(prenom);
@@ -102,9 +123,8 @@ public class Personnel  implements Element {
 						out.writeObject(telephone.get(i));
 						
 					}
-					out.writeObject(poste);
+					out.writeUTF(poste);
 				}
 	}
-
 
 }
