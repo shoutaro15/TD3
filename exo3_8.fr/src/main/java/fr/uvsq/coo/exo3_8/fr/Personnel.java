@@ -1,9 +1,15 @@
 package fr.uvsq.coo.exo3_8.fr;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Personnel  implements Element{
+public class Personnel  implements Element {
+
+	private static final long serialVersionUID = 1L;
 	private final String nom;
 	private final String prenom;
 	private final LocalDate dateNaissance;
@@ -18,8 +24,8 @@ public class Personnel  implements Element{
 	private final  LocalDate dateNaissance;
 	
 	// parametre opti
-	private  ArrayList<Long> telephone;
-	private String poste;
+	private  ArrayList<Long> telephone = new ArrayList<Long>();
+	private String poste="rien";
 	
 	public Builder(String nom,String prenom,LocalDate date)
 	{
@@ -69,6 +75,25 @@ public class Personnel  implements Element{
 	public void afficheLargeur()
 	{
 		
+	}
+
+	public void lire() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void ecrire() throws IOException {
+
+		try(
+				ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("./Test.xml"))))
+				{					
+					out.writeObject(nom);
+					out.writeObject(prenom);
+					out.writeObject(dateNaissance);
+					out.writeObject(telephone);
+					out.writeObject(poste);
+				
+				}
 	}
 
 

@@ -5,7 +5,7 @@ import java.util.Stack;
 public class Undo  extends Commande{
 	protected Stack<String> history;
 	
-	public Undo(Stack<String> h)
+	public Undo(Stack<char[]> h)
 	{
 		history = h;
 		

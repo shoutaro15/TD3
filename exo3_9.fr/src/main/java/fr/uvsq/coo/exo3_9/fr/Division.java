@@ -3,7 +3,7 @@ package fr.uvsq.coo.exo3_9.fr;
 import java.util.Stack;
 
 public class Division extends Commande {
-	protected Stack<String> history;
+	protected Stack<char[]> history;
 	
 	public Division (Stack<String> h)
 	{
