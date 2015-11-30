@@ -83,16 +83,26 @@ public class Personnel  implements Element {
 	}
 
 	public void ecrire() throws IOException {
+		private static final long serialVersionUID = 1L;
+		private final String nom;
+		private final String prenom;
+		private final LocalDate dateNaissance;
+		private final  ArrayList<Long> telephone;
+		private final  String poste;
 
 		try(
 				ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("./Test.xml"))))
 				{					
-					out.writeObject(nom);
-					out.writeObject(prenom);
+					out.writeUTF(nom);
+					out.writeUTF(prenom);
 					out.writeObject(dateNaissance);
-					out.writeObject(telephone);
+					out.writeInt(telephone.size());
+					for(int i=0 ;i<telephone.size();i++)
+					{
+						out.writeObject(telephone.get(i));
+						
+					}
 					out.writeObject(poste);
-				
 				}
 	}
 
