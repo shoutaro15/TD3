@@ -1,16 +1,20 @@
 package fr.uvsq.coo.exo3_8.fr;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+
 public class PersonnelDAO extends DAO<Personnel> {
 
 	@Override
-	public Personnel create(Personnel obj) {
-		try{
-			PreparedStatement prepare = connect.prepareStatement(
+	public Personnel create(Personnel obj){
+		
+		try(Connection connection=DriverManager.getConnection("jdbc:derby:BD;create=true")){
+			PreparedStatement prepare = connection.prepareStatement(
 			"INSERT INTO personnel (nom,prenom,poste, dateDeNaissance ) VALUES( ?,?,?,? ) " ) ;
 			prepare.setString(1 , obj.getNom()) ;
 			prepare.setString(2, obj.getPrenom());
@@ -27,8 +31,8 @@ public class PersonnelDAO extends DAO<Personnel> {
 	@Override
 	public  Personnel  find(String nom) {
 		Personnel p = new Personnel.Builder(nom, "", LocalDate.now()).build() ;
-		try{
-		PreparedStatement prepare = connect.prepareStatement (
+		try(Connection connection=DriverManager.getConnection("jdbc:derby:BD;create=true")){
+		PreparedStatement prepare = connection.prepareStatement (
 		"SELECT ∗ FROM personnel WHERE nom = ? " ) ;
 		prepare.setString( 1 , nom ) ;
 		ResultSet result = prepare.executeQuery ( ) ;
@@ -45,8 +49,8 @@ public class PersonnelDAO extends DAO<Personnel> {
 	@Override
 	public Personnel  update(Personnel  obj) {
 		Personnel p = obj;
-		try{
-		PreparedStatement prepare = connect.prepareStatement (
+		try(Connection connection=DriverManager.getConnection("jdbc:derby:BD;create=true")){
+		PreparedStatement prepare = connection.prepareStatement (
 		"Update personnel set nom =? , prenom = ? , poste= ? ,dateDeNaissance=?" ) ;
 		prepare.setString(1 ,p.getNom()) ;
 		prepare.setString(2 ,p.getPrenom()) ;
@@ -60,8 +64,8 @@ public class PersonnelDAO extends DAO<Personnel> {
 
 	@Override
 	public void delete(Personnel  obj) {
-		try{
-		PreparedStatement prepare = connect.prepareStatement (
+		try(Connection connection=DriverManager.getConnection("jdbc:derby:BD;create=true")){
+		PreparedStatement prepare = connection.prepareStatement (
 		"Delete personnel where nom =? " ) ;
 		prepare.setString(1 ,obj.getNom()) ;
 		}catch(SQLException e ) {
