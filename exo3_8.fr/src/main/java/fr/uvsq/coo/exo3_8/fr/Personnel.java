@@ -15,6 +15,26 @@ public class Personnel  implements Element {
 
 	private static final long serialVersionUID = 1L;
 	private final String nom;
+	public String getNom() {
+		return nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public LocalDate getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public ArrayList<Long> getTelephone() {
+		return telephone;
+	}
+
+	public String getPoste() {
+		return poste;
+	}
+
 	private final String prenom;
 	private final LocalDate dateNaissance;
 	private final  ArrayList<Long> telephone;
