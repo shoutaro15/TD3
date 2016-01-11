@@ -41,7 +41,6 @@
     <artifactId>hibernate-core</artifactId>
     <version>5.0.6.Final</version>
 </dependency>
-
 <dependency>
       <groupId>javax.transaction</groupId>
       <artifactId>jta</artifactId>

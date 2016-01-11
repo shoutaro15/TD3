@@ -17,10 +17,10 @@ import javax.persistence.Id;
 
 import fr.uvsq.coo.exo3_8.fr.Element;
 
-@Entity
+//@Entity
 public class Groupe {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private long id;
 	public ArrayList<Element> list;
 	public String nom;
@@ -96,6 +96,38 @@ public class Groupe {
 		}
 	
 	}
+
+
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public ArrayList<Element> getList() {
+		return list;
+	}
+
+
+	public void setList(ArrayList<Element> list) {
+		this.list = list;
+	}
+
+
+	public String getNom() {
+		return nom;
+	}
+
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
+	
 
 	
 	
